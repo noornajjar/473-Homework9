@@ -3,7 +3,7 @@
   <head>
     <title>A Simple App</title>
 
-    <link href='style.css' rel='stylesheet' type='text/css'>
+    <link href="style.css" rel="stylesheet" type="text/css">
   </head>
 
   <body>
@@ -18,12 +18,12 @@
         viewModel.
       </script>
     
-      <section class='comment-input'>
+      <section class="comment-input">
         <p>Add Your Comment:</p>
         <input data-bind="value: commentToAdd"><button data-bind="click: addComment">+</button>
       </section>
 
-      <section class='comments' data-bind="foreach: observableComments">
+      <section class="comments" data-bind="foreach: observableComments">
         <p data-bind="text: comment"></p>
       </section>
     </main>
@@ -33,7 +33,7 @@
     </footer>
 
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script type='text/javascript' src="http://knockoutjs.com/downloads/knockout-3.4.0.js"></script>
+    <script type="text/javascript" src="http://knockoutjs.com/downloads/knockout-3.4.0.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
