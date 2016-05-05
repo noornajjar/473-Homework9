@@ -13,7 +13,28 @@ var main = function (toDoObjects) {
             return reversed;
         });
         this.sortByTags = ko.computed(function(){
-            return _.sortBy(self.todoArray(), 'tag');
+            var temp = _.sortBy(self.todoArray(), 'tags');
+            var grouped = [];
+            for (var i = 0; i < temp.length; i++) {
+                 
+                grouped.push({tag: temp[i].tags, descriptions: []});
+                var index = grouped.length-1;
+                var bool = true;
+                for (var j=i; j < temp.length && bool; j++) {
+                    if (j === i) {
+                        grouped[index].descriptions.push({description:temp[j].description});
+                    }else if(temp[j].tags === temp[j-1].tags) {
+                        grouped[index].descriptions.push({description:temp[j].description});
+                    }
+                    
+                    if (j < temp.length-1 && temp[j].tags !== temp[j+1].tags){
+                        bool = false;
+                    }
+                    i=j;
+                }        
+            }
+            console.log(grouped);
+            return grouped;
         });
         
         this.description = ko.observable("");   

@@ -40,15 +40,12 @@
               </ul>
           </div>
           <div data-bind="if: tags">
-              <!--<div data-bind="foreach: sortByTags">
-                <script>
-                    if (sortByTags[$index].tags !== sortByTags[$index-1].tags) {
-                </script>
-                <h3 data-bind="text: tags">
-                <ul
-                    }
-                </script>
-              </div>-->
+              <div data-bind="foreach: sortByTags">
+                <h3 data-bind="text: tag">
+                <ul data-bind="foreach: descriptions">
+                    <li data-bind="text: description">
+                </ul>
+              </div>
           </div>
           <div data-bind="if: add">
                 <p>Description</p>
