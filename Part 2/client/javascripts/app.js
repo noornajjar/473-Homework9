@@ -33,7 +33,6 @@ var main = function (toDoObjects) {
                     i=j;
                 }        
             }
-            console.log(grouped);
             return grouped;
         });
         
@@ -76,11 +75,6 @@ var main = function (toDoObjects) {
                 self.description("");
                 self.tag("");
                 
-                var newToDo = {"description":self.description(), "tags":self.tag()};
-
-                $.post("todos", newToDo, function (result) {
-                    console.log(result);
-                });
             }
         };
     }
@@ -90,6 +84,25 @@ var main = function (toDoObjects) {
     $(".tabs a span").on("click", function () {
         $(".tabs a span").removeClass("active");
         $(this).addClass("active");
+    });
+    
+    $("#button").on("click", function () {
+        var description = $(".description").val(),
+            tags = $(".tags").val().split(","),
+            newToDo = {"description":description, "tags":tags};
+
+        $.post("todos", newToDo, function (result) {
+            console.log(result);
+
+            //toDoObjects.push(newToDo);
+            toDoObjects = result;
+
+            // update toDos
+            toDos = toDoObjects.map(function (toDo) {
+                return toDo.description;
+            });
+
+        });
     });
    /* console.log("SANITY CHECK");
     var toDos = toDoObjects.map(function (toDo) {

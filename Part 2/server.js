@@ -8,7 +8,7 @@ app.use(express.static(__dirname + "/client"));
 app.use(express.bodyParser());
 
 // connect to the amazeriffic data store in mongo
-mongoose.connect('mongodb://localhost/amazeriffic');
+mongoose.connect('mongodb://localhost/hw9');
 
 // This is our mongoose model for todos
 var ToDoSchema = mongoose.Schema({
